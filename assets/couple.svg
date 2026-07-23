@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d9d2c4"/>
+    <stop offset="1" stop-color="#8c7b69"/>
+  </linearGradient>
+</defs>
+<rect width="1200" height="1500" fill="url(#g)"/>
+<circle cx="420" cy="540" r="155" fill="#b69f88" opacity=".7"/>
+<circle cx="780" cy="540" r="155" fill="#a58e78" opacity=".7"/>
+<path d="M210 1320 C220 890 330 760 505 760 C590 760 650 810 690 900 C730 810 790 760 875 760 C1050 760 1080 930 990 1320Z" fill="#5f5146" opacity=".75"/>
+<text x="600" y="210" text-anchor="middle" fill="#fffaf3" font-family="serif" font-size="52">ضع صورتكم هنا</text>
+<text x="600" y="280" text-anchor="middle" fill="#fffaf3" font-family="serif" font-size="28">استبدل couple.svg بصورة باسم couple.jpg ثم عدّل الامتداد في index.html</text>
+</svg>
