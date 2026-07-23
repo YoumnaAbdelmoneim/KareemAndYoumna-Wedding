@@ -1,50 +1,23 @@
 const cover = document.getElementById("cover");
 const invitation = document.getElementById("invitation");
 const openButton = document.getElementById("openInvitation");
-const music = document.getElementById("weddingMusic");
-const musicButton = document.getElementById("musicButton");
 
 // غيّر التاريخ والوقت هنا.
 const weddingDate = new Date("2026-08-23T19:00:00+03:00");
 
 // اكتب رقم واتساب بصيغة دولية ومن غير +، مثال مصر: 201001234567
-const whatsappNumber = "201000000000";
+const whatsappNumber = "201128005900";
 
-let musicPlaying = false;
 
-async function playMusic() {
-  try {
-    await music.play();
-    musicPlaying = true;
-    musicButton.classList.add("playing");
-    musicButton.textContent = "♫";
-  } catch (error) {
-    musicPlaying = false;
-  }
-}
 
-function pauseMusic() {
-  music.pause();
-  musicPlaying = false;
-  musicButton.classList.remove("playing");
-  musicButton.textContent = "♪";
-}
 
 openButton.addEventListener("click", async () => {
   cover.style.display = "none";
   invitation.classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
-  await playMusic();
   observeSections();
 });
 
-musicButton.addEventListener("click", async () => {
-  if (musicPlaying) {
-    pauseMusic();
-  } else {
-    await playMusic();
-  }
-});
 
 function updateCountdown() {
   const difference = weddingDate.getTime() - Date.now();
@@ -87,20 +60,57 @@ function observeSections() {
   sections.forEach((section) => observer.observe(section));
 }
 
-document.getElementById("rsvpForm").addEventListener("submit", (event) => {
+const googleScriptUrl =
+  "https://script.google.com/macros/s/AKfycbylJTJ00Elu40O27G9mZlQs5kb-TlMDlpUaew29SCgwWU4YWzfsYaChfkLHh-tXVo-d/exec";
+
+const rsvpForm = document.getElementById("rsvpForm");
+const submitButton = rsvpForm.querySelector(
+  'button[type="submit"]'
+);
+
+rsvpForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const name = document.getElementById("guestName").value.trim();
-  const count = document.getElementById("guestCount").value;
-  const message = document.getElementById("guestMessage").value.trim();
+  const name = document
+    .getElementById("guestName")
+    .value
+    .trim();
 
-  const text = [
-    "تأكيد حضور دعوة زفاف كريم ويمنى",
-    `الاسم: ${name}`,
-    `عدد الحضور: ${count}`,
-    message ? `الرسالة: ${message}` : ""
-  ].filter(Boolean).join("\n");
+  const count = document
+    .getElementById("guestCount")
+    .value;
 
-  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank", "noopener,noreferrer");
+  const message = document
+    .getElementById("guestMessage")
+    .value
+    .trim();
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+
+  try {
+    await fetch(googleScriptUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "text/plain"
+      },
+      body: JSON.stringify({
+        name: name,
+        count: count,
+        message: message
+      })
+    });
+
+    alert("Your Attendance Has Been Confirmed Successfully ❤️");
+    rsvpForm.reset();
+
+  } catch (error) {
+    console.error(error);
+    alert("Something Went Wrong. Please Try Again.");
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = "Confirm Attendance";
+  }
 });
