@@ -660,13 +660,7 @@ body {
   overflow-y: auto;
 }
 
-main,
-.invitation,
-#invitation {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
+
 
 /* =========================
    Stability fixes
