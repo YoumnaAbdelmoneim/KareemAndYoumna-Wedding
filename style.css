@@ -536,16 +536,8 @@ footer span {
 }
 
 .reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
-
-.reveal-on-scroll.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 @keyframes fadeUp {
@@ -647,7 +639,7 @@ footer {
 
 html {
   width: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-gutter: stable;
 }
 
@@ -664,4 +656,44 @@ main,
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* =========================
+   Stability fixes
+========================= */
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+}
+
+main,
+.invitation,
+#invitation {
+  display: block;
+  min-height: 1px;
+  overflow: visible;
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
