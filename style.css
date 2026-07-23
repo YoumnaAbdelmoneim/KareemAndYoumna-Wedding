@@ -643,129 +643,25 @@ footer {
 }
 
 
-/* =================================
-   Final alignment corrections
-================================= */
+/* Fix page shifting after opening the invitation */
 
-/* Center the complete cover content */
-.cover-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-inline: auto;
-  text-align: center;
-}
-
-.cover-card > * {
-  max-width: 100%;
-}
-
-/* Small heading */
-.cover .eyebrow {
+html {
   width: 100%;
-  margin: 0 0 18px;
-  text-align: center;
-  transform: none;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
 }
 
-/* Couple names */
-.cover h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+body {
   width: 100%;
-  margin: 10px auto 22px;
-  padding: 0;
-  line-height: 0.88;
-  text-align: center;
-  transform: none;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
 }
 
-.cover h1 > * {
-  margin-inline: auto;
-  text-align: center;
-}
-
-.cover h1 b {
-  display: block;
-  margin: 12px auto;
-  line-height: 1;
-  text-align: center;
-}
-
-/* Date */
-.cover-date {
+main,
+.invitation,
+#invitation {
   width: 100%;
-  margin: 25px auto;
-  padding-left: 0.28em;
-  letter-spacing: 0.28em;
-  text-align: center;
-  transform: none;
-}
-
-/* Open invitation button */
-.cover .primary-btn {
-  align-self: center;
-  margin: 0 auto;
-}
-
-/* Welcome names */
-.welcome h2 {
-  width: 100%;
-  margin-right: auto;
   margin-left: auto;
-  text-align: center;
-  transform: none;
-}
-
-.welcome h2 div,
-.welcome h2 .amp {
-  width: 100%;
-  text-align: center;
-}
-
-/* Countdown titles and boxes */
-.countdown-section,
-.countdown-section .section-heading,
-.countdown {
   margin-right: auto;
-  margin-left: auto;
-  text-align: center;
-}
-
-.countdown div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.countdown strong,
-.countdown span {
-  width: 100%;
-  text-align: center;
-}
-
-/* Mobile correction */
-@media (max-width: 430px) {
-  .cover-card {
-    padding-right: 18px;
-    padding-left: 18px;
-  }
-
-  .cover h1 {
-    font-size: clamp(55px, 19vw, 78px);
-  }
-
-  .cover-date {
-    padding-left: 0.18em;
-    letter-spacing: 0.18em;
-    font-size: 16px;
-  }
-
-  .cover .eyebrow {
-    letter-spacing: 0.16em;
-  }
 }
