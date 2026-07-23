@@ -20,8 +20,9 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--brown);
-  font-family: "Cormorant Garamond", "Amiri", serif;
-  text-align: center;
+  font-family: "Cormorant Garamond", serif;
+  text-align: left;
+  direction: ltr;
   overflow-x: hidden;
 }
 
@@ -36,6 +37,10 @@ select {
   display: none;
 }
 
+/* =========================
+   Cover
+========================= */
+
 .cover {
   position: relative;
   min-height: 100svh;
@@ -49,48 +54,58 @@ select {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(34, 28, 24, .28), rgba(34, 28, 24, .58)),
-    radial-gradient(circle at center, transparent 15%, rgba(20, 15, 12, .32));
+    linear-gradient(
+      180deg,
+      rgba(34, 28, 24, 0.28),
+      rgba(34, 28, 24, 0.58)
+    ),
+    radial-gradient(
+      circle at center,
+      transparent 15%,
+      rgba(20, 15, 12, 0.32)
+    );
 }
 
 .cover-card {
   position: relative;
   width: min(92%, 650px);
   padding: clamp(38px, 7vw, 72px) 26px;
-  border: 1px solid rgba(255,255,255,.46);
-  background: rgba(44, 35, 29, .25);
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  background: rgba(44, 35, 29, 0.25);
   color: white;
+  text-align: left;
   backdrop-filter: blur(5px);
-  box-shadow: 0 28px 90px rgba(0,0,0,.28);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28);
 }
 
 .eyebrow {
   margin: 0 0 18px;
   text-transform: uppercase;
-  letter-spacing: .22em;
+  letter-spacing: 0.22em;
   font-size: 14px;
 }
 
 .cover h1 {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 0;
   margin: 8px 0 20px;
   font-size: clamp(62px, 14vw, 112px);
-  line-height: .76;
+  line-height: 0.76;
   font-weight: 500;
 }
 
 .cover h1 b {
   margin: 12px 0;
   color: #eadbc4;
-  font-size: .38em;
+  font-size: 0.38em;
   font-weight: 400;
 }
 
 .cover-date {
   margin: 30px 0;
-  letter-spacing: .34em;
+  letter-spacing: 0.34em;
   font-size: 19px;
 }
 
@@ -104,7 +119,10 @@ select {
   border-radius: 999px;
   cursor: pointer;
   text-decoration: none;
-  transition: transform .25s ease, background .25s ease, color .25s ease;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
 }
 
 .primary-btn {
@@ -120,9 +138,9 @@ select {
 
 .sound-note {
   margin: 18px 0 0;
-  font-family: "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 13px;
-  opacity: .82;
+  opacity: 0.82;
 }
 
 .music-button {
@@ -132,23 +150,28 @@ select {
   bottom: 18px;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(255,255,255,.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  background: rgba(77,64,55,.88);
+  background: rgba(77, 64, 55, 0.88);
   color: white;
   font-size: 20px;
   cursor: pointer;
-  box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
 }
 
 .music-button.playing {
   animation: spin 4s linear infinite;
 }
 
+/* =========================
+   General Sections
+========================= */
+
 .section {
   width: min(100%, 980px);
   margin: auto;
   padding: 95px 22px;
+  text-align: left;
 }
 
 .ornament {
@@ -157,12 +180,20 @@ select {
   font-size: 28px;
 }
 
+/* =========================
+   Quran Verse
+   Kept centered
+========================= */
+
 .verse {
   font-family: "Amiri", serif;
+  text-align: center;
+  direction: rtl;
 }
 
 .bismillah {
   font-size: clamp(22px, 4vw, 30px);
+  text-align: center;
 }
 
 .ayah {
@@ -170,15 +201,27 @@ select {
   margin: 28px auto;
   font-size: clamp(25px, 5vw, 38px);
   line-height: 2;
+  text-align: center;
 }
 
 .surah {
   color: var(--taupe);
   font-size: 16px;
+  text-align: center;
 }
+
+/* Keep the verse ornament centered */
+.verse .ornament {
+  text-align: center;
+}
+
+/* =========================
+   Welcome
+========================= */
 
 .welcome {
   padding-top: 80px;
+  text-align: left;
 }
 
 .welcome h2 {
@@ -186,25 +229,32 @@ select {
   color: var(--taupe);
   font-size: clamp(58px, 12vw, 102px);
   font-weight: 500;
+  text-align: left;
 }
 
 .welcome h2 small {
   color: var(--gold);
-  font-size: .42em;
+  font-size: 0.42em;
 }
 
 .arabic-copy {
-  font-family: "Marhey", "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(18px, 3.6vw, 25px);
-  line-height: 2;
+  line-height: 1.7;
+  text-align: left;
+  direction: ltr;
 }
+
+/* =========================
+   Couple Photo
+========================= */
 
 .photo-panel {
   position: relative;
   width: min(92%, 1050px);
   margin: 0 auto 55px;
   overflow: hidden;
-  box-shadow: 0 30px 80px rgba(65, 49, 38, .18);
+  box-shadow: 0 30px 80px rgba(65, 49, 38, 0.18);
 }
 
 .photo-panel img {
@@ -221,31 +271,45 @@ select {
   left: 0;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   gap: 20px;
   padding: 30px;
-  background: linear-gradient(transparent, rgba(30,23,19,.78));
+  background: linear-gradient(transparent, rgba(30, 23, 19, 0.78));
   color: #fff;
   text-align: left;
 }
 
 .photo-caption strong {
-  letter-spacing: .14em;
+  letter-spacing: 0.14em;
+}
+
+/* =========================
+   Section Headings
+========================= */
+
+.section-heading {
+  text-align: left;
 }
 
 .section-heading span {
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: .2em;
+  letter-spacing: 0.2em;
   font-size: 13px;
 }
 
 .section-heading h3 {
   margin: 8px 0 38px;
   color: var(--taupe);
-  font-family: "Marhey", "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: clamp(34px, 6vw, 52px);
   font-weight: 400;
+  text-align: left;
 }
+
+/* =========================
+   Wedding Details
+========================= */
 
 .details-grid {
   display: grid;
@@ -257,7 +321,8 @@ select {
 .detail-card {
   padding: 34px 22px;
   border: 1px solid #dfd2c2;
-  background: rgba(255,255,255,.52);
+  background: rgba(255, 255, 255, 0.52);
+  text-align: left;
 }
 
 .detail-icon {
@@ -265,18 +330,22 @@ select {
   margin-bottom: 16px;
   color: var(--gold);
   font-size: 31px;
+  text-align: left;
 }
 
 .detail-card h4 {
   margin: 0 0 12px;
-  font-family: "Marhey", "Amiri", serif;
-  font-weight: 400;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 600;
+  text-align: left;
 }
 
 .detail-card p {
   margin: 5px 0;
-  font-family: "Amiri", serif;
-  font-size: 17px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  text-align: left;
 }
 
 .outline-btn {
@@ -289,12 +358,25 @@ select {
   color: #fff;
 }
 
+/* =========================
+   Countdown
+========================= */
+
 .countdown-section {
   padding: 100px 20px;
   background:
-    linear-gradient(rgba(48,40,34,.80), rgba(48,40,34,.86)),
+    linear-gradient(
+      rgba(48, 40, 34, 0.8),
+      rgba(48, 40, 34, 0.86)
+    ),
     url("assets/cover.svg") center/cover fixed;
   color: white;
+  text-align: left;
+}
+
+.countdown-section .section-heading {
+  width: min(100%, 980px);
+  margin: 0 auto;
 }
 
 .section-heading.light h3,
@@ -305,14 +387,17 @@ select {
 .countdown {
   display: grid;
   grid-template-columns: repeat(4, minmax(80px, 145px));
-  justify-content: center;
+  justify-content: start;
   gap: 14px;
+  width: min(100%, 980px);
+  margin: 0 auto;
 }
 
 .countdown div {
   padding: 24px 12px;
-  border: 1px solid rgba(255,255,255,.34);
-  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  background: rgba(255, 255, 255, 0.08);
+  text-align: left;
   backdrop-filter: blur(3px);
 }
 
@@ -323,31 +408,41 @@ select {
 }
 
 .countdown span {
-  font-family: "Amiri", serif;
-  font-size: 16px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
 }
+
+/* =========================
+   RSVP Form
+========================= */
 
 .rsvp {
   width: min(100%, 760px);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
 }
 
 .rsvp-intro {
-  font-family: "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 20px;
+  text-align: left;
 }
 
 form {
   display: grid;
   gap: 17px;
   margin: 30px auto;
-  text-align: right;
+  text-align: left;
+  direction: ltr;
 }
 
 label {
   display: grid;
   gap: 8px;
-  font-family: "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 17px;
+  text-align: left;
 }
 
 input,
@@ -356,17 +451,25 @@ textarea {
   width: 100%;
   border: 1px solid #d8c8b5;
   border-radius: 14px;
-  background: rgba(255,255,255,.72);
+  background: rgba(255, 255, 255, 0.72);
   color: var(--brown);
   padding: 14px 15px;
   outline: none;
+  text-align: left;
+  direction: ltr;
+}
+
+input::placeholder,
+textarea::placeholder {
+  text-align: left;
+  direction: ltr;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(183,154,108,.15);
+  box-shadow: 0 0 0 3px rgba(183, 154, 108, 0.15);
 }
 
 textarea {
@@ -376,25 +479,36 @@ textarea {
 
 .form-note {
   color: #7a6a5f;
-  font-family: "Amiri", serif;
+  font-family: "Cormorant Garamond", serif;
   font-size: 14px;
+  text-align: left;
 }
+
+/* =========================
+   Footer
+========================= */
 
 footer {
   padding: 65px 20px;
   background: var(--dark);
   color: #fff;
+  text-align: left;
 }
 
 footer h3 {
   margin: 8px 0;
   font-size: 45px;
   font-weight: 500;
+  text-align: left;
 }
 
 footer span {
-  letter-spacing: .22em;
+  letter-spacing: 0.22em;
 }
+
+/* =========================
+   Animations
+========================= */
 
 .reveal {
   animation: fadeUp 1.2s ease both;
@@ -403,7 +517,9 @@ footer span {
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
 }
 
 .reveal-on-scroll.visible {
@@ -412,13 +528,26 @@ footer span {
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+/* =========================
+   Tablet and Mobile
+========================= */
 
 @media (max-width: 760px) {
   .details-grid {
@@ -427,6 +556,7 @@ footer span {
 
   .countdown {
     grid-template-columns: repeat(2, minmax(115px, 1fr));
+    justify-content: stretch;
   }
 
   .photo-caption {
@@ -444,11 +574,19 @@ footer span {
     width: 100%;
   }
 
+  .cover-date {
+    letter-spacing: 0.2em;
+  }
+
   .countdown {
     gap: 9px;
   }
 
   .countdown div {
     padding: 18px 8px;
+  }
+
+  footer h3 {
+    font-size: 36px;
   }
 }
