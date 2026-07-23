@@ -87,80 +87,75 @@ select {
     );
 }
 
+.cover {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    linear-gradient(
+      rgba(232, 240, 246, 0.32),
+      rgba(197, 216, 230, 0.42)
+    ),
+    url("assets/cover.svg") center/cover no-repeat;
+}
+
+.cover-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(91, 125, 150, 0.18)
+    );
+}
+
 .cover-card {
   position: relative;
   width: min(92%, 650px);
   padding: clamp(42px, 8vw, 78px) 28px;
-  border: 1px solid rgba(224, 235, 243, 0.58);
-  background: rgba(19, 44, 66, 0.3);
-  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: rgba(247, 251, 254, 0.72);
+  color: var(--navy);
   text-align: center;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   box-shadow:
-    0 35px 100px rgba(4, 18, 30, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-.cover-card::before,
-.cover-card::after {
-  content: "";
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  pointer-events: none;
+    0 28px 70px rgba(56, 86, 108, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 .cover-card::before {
-  top: 14px;
-  left: 14px;
-  border-top: 1px solid rgba(210, 224, 234, 0.72);
-  border-left: 1px solid rgba(210, 224, 234, 0.72);
+  border-top-color: rgba(113, 146, 170, 0.6);
+  border-left-color: rgba(113, 146, 170, 0.6);
 }
 
 .cover-card::after {
-  right: 14px;
-  bottom: 14px;
-  border-right: 1px solid rgba(210, 224, 234, 0.72);
-  border-bottom: 1px solid rgba(210, 224, 234, 0.72);
-}
-
-.eyebrow {
-  margin: 0 0 18px;
-  color: inherit;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-size: 13px;
-  font-weight: 500;
-  text-align: center;
+  border-right-color: rgba(113, 146, 170, 0.6);
+  border-bottom-color: rgba(113, 146, 170, 0.6);
 }
 
 .cover h1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  margin: 10px 0 22px;
-  font-size: clamp(62px, 14vw, 112px);
-  line-height: 0.78;
-  font-weight: 400;
-  text-align: center;
-  text-shadow: 0 5px 28px rgba(0, 0, 0, 0.22);
+  color: var(--navy);
+  text-shadow: none;
 }
 
 .cover h1 b {
-  margin: 14px 0;
-  color: var(--silver-light);
-  font-size: 0.36em;
-  font-weight: 400;
+  color: var(--silver-blue);
 }
 
 .cover-date {
-  margin: 31px 0;
-  color: #eef4f8;
-  letter-spacing: 0.34em;
-  font-size: 18px;
-  text-align: center;
+  color: var(--navy-light);
+}
+
+.cover .eyebrow {
+  color: var(--navy-light);
+}
+
+.sound-note {
+  color: var(--muted-text);
 }
 
 .primary-btn,
@@ -478,11 +473,11 @@ select {
   overflow: hidden;
   background:
     linear-gradient(
-      rgba(11, 34, 53, 0.89),
-      rgba(11, 34, 53, 0.94)
+      rgba(237, 244, 249, 0.91),
+      rgba(214, 228, 238, 0.94)
     ),
     url("assets/cover.svg") center/cover fixed;
-  color: var(--white);
+  color: var(--navy);
   text-align: center;
 }
 
@@ -490,52 +485,37 @@ select {
   content: "";
   position: absolute;
   inset: 18px;
-  border: 1px solid rgba(200, 213, 223, 0.22);
+  border: 1px solid rgba(92, 128, 153, 0.25);
   pointer-events: none;
 }
 
-.countdown-section .section-heading {
-  position: relative;
-  width: min(100%, 980px);
-  margin: 0 auto;
-}
-
 .section-heading.light h3 {
-  color: var(--white);
+  color: var(--navy);
 }
 
 .section-heading.light span {
-  color: var(--silver-light);
-}
-
-.countdown {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(80px, 145px));
-  justify-content: center;
-  gap: 14px;
-  width: min(100%, 980px);
-  margin: 0 auto;
+  color: var(--navy-light);
 }
 
 .countdown div {
   padding: 25px 12px;
-  border: 1px solid rgba(200, 213, 223, 0.38);
-  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(121, 154, 177, 0.4);
+  background: rgba(255, 255, 255, 0.68);
   text-align: center;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  box-shadow: 0 13px 32px rgba(49, 83, 107, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .countdown strong {
   display: block;
-  color: var(--white);
+  color: var(--navy);
   font-size: clamp(40px, 8vw, 66px);
   font-weight: 400;
 }
 
 .countdown span {
-  color: var(--silver-light);
+  color: var(--navy-light);
   font-size: 16px;
   letter-spacing: 0.08em;
 }
