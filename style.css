@@ -212,12 +212,25 @@ select {
   color: var(--taupe);
   font-size: clamp(58px, 12vw, 102px);
   font-weight: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   text-align: center;
 }
 
+.welcome h2 span {
+  display: block;
+  line-height: 0.9;
+}
+
 .welcome h2 small {
+  display: block;
   color: var(--gold);
   font-size: 0.42em;
+  line-height: 1;
 }
 
 .arabic-copy {
