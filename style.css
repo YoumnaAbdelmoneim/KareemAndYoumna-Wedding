@@ -21,7 +21,7 @@ body {
   background: var(--cream);
   color: var(--brown);
   font-family: "Cormorant Garamond", serif;
-  text-align: left;
+  text-align: center;
   direction: ltr;
   overflow-x: hidden;
 }
@@ -143,25 +143,7 @@ select {
   opacity: 0.82;
 }
 
-.music-button {
-  position: fixed;
-  z-index: 20;
-  left: 18px;
-  bottom: 18px;
-  width: 48px;
-  height: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  background: rgba(77, 64, 55, 0.88);
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-}
 
-.music-button.playing {
-  animation: spin 4s linear infinite;
-}
 
 /* =========================
    General Sections
@@ -171,7 +153,7 @@ select {
   width: min(100%, 980px);
   margin: auto;
   padding: 95px 22px;
-  text-align: left;
+  text-align: center;
 }
 
 .ornament {
@@ -221,7 +203,7 @@ select {
 
 .welcome {
   padding-top: 80px;
-  text-align: left;
+  text-align: center;
 }
 
 .welcome h2 {
@@ -229,7 +211,7 @@ select {
   color: var(--taupe);
   font-size: clamp(58px, 12vw, 102px);
   font-weight: 500;
-  text-align: left;
+  text-align: center;
 }
 
 .welcome h2 small {
@@ -288,7 +270,7 @@ select {
 ========================= */
 
 .section-heading {
-  text-align: left;
+  text-align: center;
 }
 
 .section-heading span {
@@ -304,7 +286,7 @@ select {
   font-family: "Cormorant Garamond", serif;
   font-size: clamp(34px, 6vw, 52px);
   font-weight: 400;
-  text-align: left;
+  text-align: center;
 }
 
 /* =========================
@@ -322,7 +304,7 @@ select {
   padding: 34px 22px;
   border: 1px solid #dfd2c2;
   background: rgba(255, 255, 255, 0.52);
-  text-align: left;
+  text-align: center;
 }
 
 .detail-icon {
@@ -330,7 +312,7 @@ select {
   margin-bottom: 16px;
   color: var(--gold);
   font-size: 31px;
-  text-align: left;
+  text-align: center;
 }
 
 .detail-card h4 {
@@ -345,7 +327,7 @@ select {
   margin: 5px 0;
   font-family: "Cormorant Garamond", serif;
   font-size: 18px;
-  text-align: left;
+  text-align: center;
 }
 
 .outline-btn {
@@ -492,14 +474,14 @@ footer {
   padding: 65px 20px;
   background: var(--dark);
   color: #fff;
-  text-align: left;
+  text-align: center;
 }
 
 footer h3 {
   margin: 8px 0;
   font-size: 45px;
   font-weight: 500;
-  text-align: left;
+  text-align: center;
 }
 
 footer span {
