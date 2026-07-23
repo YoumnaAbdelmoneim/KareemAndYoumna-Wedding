@@ -3,13 +3,14 @@
 }
 
 :root {
-  --cream: #f7f2ea;
-  --paper: #fffdf9;
-  --brown: #4d4037;
-  --taupe: #806b59;
-  --gold: #b79a6c;
-  --sage: #9ba08b;
-  --dark: #332b26;
+  --cream: #FCFDFF;
+  --paper: #FFFFFF;
+
+  --brown: #3A4756;
+  --taupe: #6B8FB8;
+  --gold: #9AB9D8;
+  --sage: #DCEAF7;
+  --dark: #385A7A;
 }
 
 html {
