@@ -368,7 +368,7 @@ select {
       rgba(225, 237, 245, 0.88),
       rgba(193, 214, 228, 0.90)
     ),
-    url("assets/cover.svg") center/cover fixed;
+    url("assets/cover.svg") center/cover no-repeat;
   color: var(--dark);
   text-align: center;
 }
@@ -535,7 +535,7 @@ footer span {
   animation: fadeUp 1.2s ease both;
 }
 
-.reveal-on- {
+.reveal-on-scroll {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -543,7 +543,7 @@ footer span {
     transform 0.8s ease;
 }
 
-.reveal-on-.visible {
+.reveal-on-scroll.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -643,81 +643,50 @@ footer {
 }
 
 
-/* Fix page shifting after opening the invitation */
+
+/* =========================
+   Final scroll stability
+========================= */
 
 html {
   width: 100%;
-  -behavior: smooth;
-  
- 
+  min-height: 100%;
+  scroll-behavior: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 body {
   width: 100%;
   min-height: 100%;
   margin: 0;
- 
-  
-}
-
-
-
-/* =========================
-   Stability fixes
-========================= */
-
-html,
-body {
-  min-height: 100%;
-}
-
-body {
-  overflow-y: auto;
-  overscroll-behavior-y: auto;
+  overflow-x: hidden;
+  overflow-y: visible;
 }
 
 main,
 .invitation,
 #invitation {
-  display: block;
-  min-height: 1px;
+  width: 100%;
+  min-height: 0;
   overflow: visible;
+}
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.reveal-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 img {
+  display: block;
   max-width: 100%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
-  overflow-y: auto;
-  scrollbar-gutter: auto;
-}
-
-body {
-  margin: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-main,
-.invitation,
-#invitation {
-  width: 100%;
-  min-height: auto;
-  overflow: visible;
 }
