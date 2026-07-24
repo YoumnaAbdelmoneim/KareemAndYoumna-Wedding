@@ -2,65 +2,19 @@ const cover = document.getElementById("cover");
 const invitation = document.getElementById("invitation");
 const openButton = document.getElementById("openInvitation");
 
-// تاريخ ووقت الفرح
 const weddingDate = new Date("2026-08-23T19:00:00+03:00");
 
-// رقم واتساب بصيغة دولية ومن غير +
-const whatsappNumber = "201128005900";
-
-let sectionsObserver = null;
-
-/* =========================
-   Open Invitation
-========================= */
-
 openButton.addEventListener("click", () => {
-  cover.style.display = "none";
   invitation.classList.remove("hidden");
 
-  // إجبار المتصفح على إعادة حساب طول الصفحة
-  void invitation.offsetHeight;
-
-  // الرجوع لأول الدعوة فورًا من غير smooth scroll
-  window.scrollTo(0, 0);
-
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      observeSections();
+  document
+    .querySelectorAll(".reveal-on-scroll")
+    .forEach((section) => {
+      section.classList.add("visible");
     });
-  });
+
+  cover.remove();
 });
-
-/* =========================
-   Reveal Sections
-========================= */
-
-function observeSections() {
-  const sections = document.querySelectorAll(".reveal-on-scroll");
-
-  if (sectionsObserver) {
-    sectionsObserver.disconnect();
-  }
-
-  sectionsObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          sectionsObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.05,
-      rootMargin: "0px 0px -20px 0px"
-    }
-  );
-
-  sections.forEach((section) => {
-    sectionsObserver.observe(section);
-  });
-}
 
 /* =========================
    Countdown
@@ -106,7 +60,7 @@ updateCountdown();
 setInterval(updateCountdown, 1000);
 
 /* =========================
-   RSVP Form
+   RSVP
 ========================= */
 
 const googleScriptUrl =
@@ -122,22 +76,18 @@ if (rsvpForm) {
   rsvpForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const guestName = document.getElementById("guestName");
-    const guestCount = document.getElementById("guestCount");
-    const guestMessage = document.getElementById("guestMessage");
+    const name = document
+      .getElementById("guestName")
+      .value
+      .trim();
 
-    if (!guestName || !guestCount || !guestMessage || !submitButton) {
-      return;
-    }
+    const count =
+      document.getElementById("guestCount").value;
 
-    const name = guestName.value.trim();
-    const count = guestCount.value;
-    const message = guestMessage.value.trim();
-
-    if (!name || !count) {
-      alert("Please Enter Your Name And Number Of Guests.");
-      return;
-    }
+    const message = document
+      .getElementById("guestMessage")
+      .value
+      .trim();
 
     submitButton.disabled = true;
     submitButton.textContent = "Sending...";
@@ -162,7 +112,7 @@ if (rsvpForm) {
 
       rsvpForm.reset();
     } catch (error) {
-      console.error("RSVP Error:", error);
+      console.error(error);
 
       alert(
         "Something Went Wrong. Please Try Again."
