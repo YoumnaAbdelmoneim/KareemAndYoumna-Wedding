@@ -81,8 +81,7 @@ if (rsvpForm) {
       .value
       .trim();
 
-    const count =
-      document.getElementById("guestCount").value;
+    
 
     const message = document
       .getElementById("guestMessage")
@@ -101,7 +100,6 @@ if (rsvpForm) {
         },
         body: JSON.stringify({
           name,
-          count,
           message
         })
       });
