@@ -535,7 +535,7 @@ footer span {
   animation: fadeUp 1.2s ease both;
 }
 
-.reveal-on-scroll {
+.reveal-on- {
   opacity: 0;
   transform: translateY(30px);
   transition:
@@ -543,7 +543,7 @@ footer span {
     transform 0.8s ease;
 }
 
-.reveal-on-scroll.visible {
+.reveal-on-.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -647,9 +647,9 @@ footer {
 
 html {
   width: 100%;
-  scroll-behavior: smooth;
+  -behavior: smooth;
   overflow-y: auto;
-  scrollbar-gutter: stable;
+  bar-gutter: stable;
 }
 
 body {
@@ -657,7 +657,7 @@ body {
   min-height: 100%;
   margin: 0;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: scroll ;
   overscroll-behavior-y: auto;
 }
 
