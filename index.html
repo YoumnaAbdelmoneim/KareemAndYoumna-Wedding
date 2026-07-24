@@ -231,11 +231,9 @@
       <span>23 · 08 · 2026</span>
     </footer>
   </main>
-
-  <script src="script.js?v=20"></script>
- <audio id="weddingMusic" loop preload="auto">
+<audio id="weddingMusic" loop preload="auto">
   <source
-    src="https://youmnaabdelmoneim.github.io/KareemAndYoumna-Wedding/assets/wedding-song.mp3"
+    src="./assets/wedding-song.mp3?v=3"
     type="audio/mpeg"
   />
 </audio>
@@ -249,7 +247,10 @@
   <span id="musicIcon">▶</span>
 </button>
 
-<script>
+<script src="./script.js?v=21"></script>
+</body>
+</html>
+
   document.addEventListener("DOMContentLoaded", function () {
     const weddingMusic = document.getElementById("weddingMusic");
     const musicButton = document.getElementById("musicButton");
