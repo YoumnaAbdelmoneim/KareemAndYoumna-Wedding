@@ -233,18 +233,70 @@
   </main>
 
   <script src="script.js?v=20"></script>
-  <audio id="weddingMusic" loop preload="auto">
-  <source src="assets/wedding-song.mp3" type="audio/mpeg" />
-  Your browser does not support audio.
+ <audio id="weddingMusic" loop preload="auto">
+  <source
+    src="https://youmnaabdelmoneim.github.io/KareemAndYoumna-Wedding/assets/music/wedding-song.mp3"
+    type="audio/mpeg"
+  />
 </audio>
 
 <button
   id="musicButton"
   class="music-button"
   type="button"
-  aria-label="Play music"
+  aria-label="Play wedding music"
 >
-  <span id="musicIcon">♪</span>
+  <span id="musicIcon">▶</span>
 </button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const weddingMusic = document.getElementById("weddingMusic");
+    const musicButton = document.getElementById("musicButton");
+    const musicIcon = document.getElementById("musicIcon");
+
+    weddingMusic.volume = 0.5;
+
+    musicButton.addEventListener("click", async function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+
+      try {
+        if (weddingMusic.paused) {
+          await weddingMusic.play();
+        } else {
+          weddingMusic.pause();
+        }
+      } catch (error) {
+        console.error("Music error:", error);
+        console.error("Music source:", weddingMusic.currentSrc);
+
+        alert(
+          "The music couldn't play. Please check that the song was uploaded correctly."
+        );
+      }
+    });
+
+    weddingMusic.addEventListener("play", function () {
+      musicIcon.textContent = "❚❚";
+      musicButton.classList.add("music-playing");
+      musicButton.setAttribute("aria-label", "Pause wedding music");
+    });
+
+    weddingMusic.addEventListener("pause", function () {
+      musicIcon.textContent = "▶";
+      musicButton.classList.remove("music-playing");
+      musicButton.setAttribute("aria-label", "Play wedding music");
+    });
+
+    weddingMusic.addEventListener("error", function () {
+      console.error("Audio file failed to load.");
+      console.error("Audio error:", weddingMusic.error);
+      console.error("Audio URL:", weddingMusic.currentSrc);
+
+      musicIcon.textContent = "!";
+    });
+  });
+</script>
 </body>
 </html>
