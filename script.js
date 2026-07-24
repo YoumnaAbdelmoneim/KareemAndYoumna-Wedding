@@ -122,54 +122,69 @@ if (rsvpForm) {
   });
 }
 
+/* =========================
+   Wedding Music
+========================= */
+
 const weddingMusic = document.getElementById("weddingMusic");
 const musicButton = document.getElementById("musicButton");
 const musicIcon = document.getElementById("musicIcon");
 
-let musicStarted = false;
+if (weddingMusic && musicButton && musicIcon) {
+  weddingMusic.volume = 0.45;
 
-async function playMusic() {
-  try {
-    weddingMusic.volume = 0.35;
-    await weddingMusic.play();
-
-    musicStarted = true;
-    musicIcon.textContent = "♫";
+  function showPlayingState() {
+    musicIcon.textContent = "❚❚";
     musicButton.classList.add("music-playing");
-    musicButton.setAttribute("aria-label", "Pause music");
-  } catch (error) {
-    console.log("The browser blocked automatic audio playback.");
-  }
-}
-
-function pauseMusic() {
-  weddingMusic.pause();
-
-  musicIcon.textContent = "♪";
-  musicButton.classList.remove("music-playing");
-  musicButton.setAttribute("aria-label", "Play music");
-}
-
-musicButton.addEventListener("click", async () => {
-  if (weddingMusic.paused) {
-    await playMusic();
-  } else {
-    pauseMusic();
-  }
-});
-
-/*
-  المتصفحات وواتساب غالبًا بيمنعوا تشغيل الأغنية تلقائيًا.
-  لذلك الأغنية هتبدأ مع أول ضغطة من الزائر داخل الموقع.
-*/
-async function startMusicOnFirstInteraction() {
-  if (!musicStarted) {
-    await playMusic();
+    musicButton.setAttribute("aria-label", "Pause wedding music");
   }
 
-  document.removeEventListener("click", startMusicOnFirstInteraction);
-  document.removeEventListener("touchstart", startMusicOnFirstInteraction);
-}
+  function showPausedState() {
+    musicIcon.textContent = "▶";
+    musicButton.classList.remove("music-playing");
+    musicButton.setAttribute("aria-label", "Play wedding music");
+  }
 
-document.addEventListener("click", startMusicOnFirstInteraction);
-document.addEventListener("touchstart", startMusicOnFirstInteraction);
+  async function playWeddingMusic() {
+    try {
+      await weddingMusic.play();
+    } catch (error) {
+      console.error("Music could not play:", error);
+      console.error("Music URL:", weddingMusic.currentSrc);
+    }
+  }
+
+  musicButton.addEventListener("click", async function (event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (weddingMusic.paused) {
+      await playWeddingMusic();
+    } else {
+      weddingMusic.pause();
+    }
+  });
+
+  /*
+    تشغيل الأغنية عند الضغط على Open Invitation.
+    الضغطة تعتبر تفاعلًا مباشرًا، لذلك الموبايل يسمح بالصوت.
+  */
+  if (openButton) {
+    openButton.addEventListener(
+      "click",
+      async function () {
+        await playWeddingMusic();
+      },
+      { once: true }
+    );
+  }
+
+  weddingMusic.addEventListener("play", showPlayingState);
+  weddingMusic.addEventListener("pause", showPausedState);
+
+  weddingMusic.addEventListener("error", function () {
+    musicIcon.textContent = "!";
+    console.error("Audio loading error:", weddingMusic.error);
+    console.error("Audio URL:", weddingMusic.currentSrc);
+  });
+}
